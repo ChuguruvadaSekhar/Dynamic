@@ -1,0 +1,30 @@
+.accordianHeading{
+    color: #1e22aa;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  .margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .mat-accordion .mat-expansion-panel:not(.mat-expanded),
+  .mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing) {
+     margin-bottom: 20px;
+  }
+  
+  .mat-expansion-panel-header{
+    background-color: #0000000a;
+  }
+  
+  .header {
+    background-color: #e4e1df !important;
+  }
+  
+  ::ng-deep .mat-expansion-panel-body{
+    padding: 10px 24px 16px !important;
+  }

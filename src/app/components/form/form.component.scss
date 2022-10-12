@@ -1,0 +1,19 @@
+.productHeading{
+    color: #1e22aa;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 22px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin: 10px 0px 10px 18px;
+  }
+  .buttonAlignment {
+    display: flex;
+    justify-content: center;
+    .submitBtn {
+      padding: 20px 0px 20px 10px;
+    }
+    .resetBtn {
+      padding: 20px 0px 20px 10px;
+    }
+  }
+  

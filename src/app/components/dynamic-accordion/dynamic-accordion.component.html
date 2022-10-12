@@ -1,0 +1,8 @@
+<div *ngFor="let keys of fields">
+  <app-dynamic-form
+    [fields]="keys"
+    [groupName]="ObjectKeys(keys)[1]"
+    [accordianHeading]="ObjectValues(keys)[0]"
+    [form]="userForm"
+  ></app-dynamic-form>
+</div>

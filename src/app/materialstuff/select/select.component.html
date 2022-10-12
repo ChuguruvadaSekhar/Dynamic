@@ -1,0 +1,13 @@
+<div class="displaySelect">
+    <mat-form-field
+      class="demo-full-width margin-top alignment"
+      [formGroup]="group"
+    >
+      <mat-select [placeholder]="field.label" [formControlName]="field.name">
+        <mat-option *ngFor="let item of field.options" [value]="item.label">{{
+          item.label
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  

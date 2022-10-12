@@ -1,0 +1,142 @@
+
+    {
+        "productHeading": "Sample",
+        "fieldInfo": [
+        {
+          "accordianLabel": "CardType",
+          "product": [
+            {
+              "label": "CardType",
+              "type": "select",
+              "name": "cardType",
+              "options": [
+                {
+                  "label": "Corporate",
+                  "value": "corporate"
+                },
+                {
+                  "label": "Private",
+                  "value": "private"
+                }
+              ]
+            },
+            {
+              "label": "Name",
+              "name": "name",
+              "type": "input",
+              "value": "",
+              "validations": [
+                {
+                  "name": "required",
+                  "message": "Name is Required"
+                }
+              ]
+            }
+            
+          ],
+          "panelOpenState": "true"
+        },
+        {
+          "accordianLabel": "CustomerDetails",
+          "CustomerDetails": [
+            {
+              "label": "Bank Branch ID",
+              "name": "bankBranchId",
+              "type": "input",
+              "value": ""
+            },
+            {
+              "label": "Adminstrator's P.ID",
+              "name": "adminstrator'sP.ID",
+              "type": "input",
+              "value": ""
+            },
+            {
+              "name": "howmanyBeneficiaryOwnersarethereinthecompany",
+              "type": "radio",
+              "label": "howmanyBeneficiaryOwnersarethereinthecompany",
+              "options": [
+                {
+                  "label": "option0",
+                  "value": "option0",
+                  "function": "addBeneficiaryOwners()"
+                },
+                {
+                  "label": "option1",
+                  "value": "option1",
+                  "function": "addBeneficiaryOwners()"
+                },
+                {
+                  "label": "option2",
+                  "value": "option2",
+                  "function": "addBeneficiaryOwners()"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "accordianLabel": "BusinessOwnerDetail",
+          "BusinessOwnerDetail": [
+            {
+              "name": "firstName",
+              "label": "FirstName",
+              "type": "input",
+              "value": "",
+              "validations":[
+                {
+                    "name": "firstName",
+                    "message": "Lirst Name is required"
+                }
+                
+              ]
+            },
+            {
+              "name": "lastName",
+              "label": "LastName",
+              "type": "input",
+              "value": "",
+              "validations":[
+                {
+                    "name": "lastName",
+                    "message": "Last Name is required"
+                }
+              ]
+            },
+            {
+              "name": "ssn",
+              "label": "SSN",
+              "type": "input",
+              "value": "",
+              "validations":[
+                {
+                    "name": "ssn",
+                    "message": "SSN is required"
+                }
+              ]
+            },
+            {
+              "type": "button",
+              "label": "Add Beneficiary Owners",
+              "function": "addBeneficiaryOwners()"
+            }
+          ]
+        },
+        {
+          "accordianLabel": "Test4",
+          "Tests": [
+            {
+              "name": "rules",
+              "label": "Rules",
+              "type": "checkbox"
+            },
+            {
+              "name": "tips",
+              "label": "Tips",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    }
+    
