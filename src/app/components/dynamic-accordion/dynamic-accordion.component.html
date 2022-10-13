@@ -1,8 +1,10 @@
-<div *ngFor="let keys of fields">
+<div *ngFor="let keys of fields;trackBy:identify">
   <app-dynamic-form
     [fields]="keys"
     [groupName]="ObjectKeys(keys)[1]"
     [accordianHeading]="ObjectValues(keys)[0]"
     [form]="userForm"
+    [radioOption]="radioOption"
+    (radioOnChange)="radioOnChanged($event)"
   ></app-dynamic-form>
 </div>

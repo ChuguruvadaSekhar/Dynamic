@@ -1,6 +1,8 @@
-<div class="demo-full-width margin-top addUser" [formGroup]="group">
-    <button mat-raised-button color="primary"   >
-      {{ field.label }}
-    </button>
-  </div>
-  
+<div
+  class="demo-full-width margin-top addBeneficiaryOwners"
+  [formGroup]="group"
+>
+  <button mat-raised-button color="primary" (click)="callFunction(field.function)">
+    {{ field.label }}
+  </button>
+</div>

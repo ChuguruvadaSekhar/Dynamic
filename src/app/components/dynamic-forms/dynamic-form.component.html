@@ -1,23 +1,24 @@
 <form class="dynamic-form" [formGroup]="form">
-    <mat-accordion class="accordian">
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-        [expanded]="firstAccordian"
+  <mat-accordion class="accordian">
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+      [expanded]="firstAccordian"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3 class="accordianHeading">{{ accordianHeading }}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-container
+        *ngFor="let field of keys"
+        appFormFields
+        [field]="field"
+        [group]="form"
+        [radioOption]="radioOption"
+        (outputEvent)="outputEvent($event)"
       >
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <h3 class="accordianHeading">{{ accordianHeading }}</h3>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ng-container
-          *ngFor="let field of keys"
-          appFormFields
-          [field]="field"
-          [group]="form"
-        >
-        </ng-container>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </form>
-  
+      </ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

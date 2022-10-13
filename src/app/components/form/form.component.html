@@ -1,17 +1,21 @@
 <div *ngIf="configHeading">
-    <div class="productHeading">
-      {{configHeading}}
-    </div>
-    <app-dynamic-accordion
-      *ngIf="configData"
-      [fields]="configData.fieldInfo"
-      [userForm] = "userForm"
-    >
-    </app-dynamic-accordion>
-    <div class="buttonAlignment">
-        <div class="submitBtn">
-            <button mat-raised-button color="primary"(click)="submitForm()">Submit</button>
-        </div>
+  <div class="productHeading">
+    {{ configHeading }}
+  </div>
+  <app-dynamic-accordion
+    *ngIf="configData"
+    [fields]="configData.fieldInfo"
+    [actualFields]="configData.fieldInfo"
+    [userForm]="userForm"
+    [radioOption]="radioOption"
+    (radioOnChange)="radioOnChange($event)"
+  >
+  </app-dynamic-accordion>
+  <div class="buttonAlignment">
+    <div class="submitBtn">
+      <button mat-raised-button color="primary" (click)="submitForm()">
+        Submit
+      </button>
     </div>
   </div>
-
+</div>

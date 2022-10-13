@@ -3,6 +3,7 @@ import {
   EventEmitter,
   Input,
   KeyValueDiffers,
+  OnChanges,
   OnInit,
   Output,
 } from '@angular/core';
@@ -16,11 +17,14 @@ import { Validator } from '@angular/forms';
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
 })
-export class DynamicFormComponent implements OnInit {
+export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() fields: any;
   @Input() groupName: any;
+  @Input() userForm: any;
   @Input() accordianHeading: any;
   @Input() form!: FormGroup;
+  @Input() radioOption: any;
+  @Output() radioOnChange: EventEmitter<any> = new EventEmitter();
 
   panelOpenState = false;
   firstAccordian = false;
@@ -39,6 +43,10 @@ export class DynamicFormComponent implements OnInit {
     if (this.fields.panelOpenState != undefined) {
       this.firstAccordian = this.fields.panelOpenState;
     }
+  }
+
+  ngOnChanges(changes: any): void {
+    this.fields = this.fields;
   }
 
   //To create formControl for each fields from the Config data
@@ -112,7 +120,18 @@ export class DynamicFormComponent implements OnInit {
   //   const addBeneficiaryOwners = e.target.value || 0;
   //   if (this.FieldInfo.length < addBeneficiaryOwners) {
   //     for (let i = this.FieldInfo.length; i < addBeneficiaryOwners; i++) {
-  //       this.FieldInfo.push(this.fb.group({}));
+  //       this.FieldInfo.push(
+  //         this.fb.group({
+  //           label: ['', Validators.required],
+  //           name: ['', Validators.required],
+  //         })
+  //       );
+  //       // this.FieldInfo.push(this.fb.array([]));
+  //       // e.forEach((field: any)=>{
+  //       //   if(field.name === field.name){
+  //       //     const control = this.fb.control(field)
+  //       //   }
+  //       // })
   //     }
   //   } else {
   //     for (let i = this.FieldInfo.length; i >= addBeneficiaryOwners; i--) {
@@ -120,4 +139,8 @@ export class DynamicFormComponent implements OnInit {
   //     }
   //   }
   // }
+
+  outputEvent(event: any) {
+    this.radioOnChange.emit(event);
+  }
 }

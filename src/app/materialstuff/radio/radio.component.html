@@ -1,15 +1,16 @@
 <div class="demo-full-width margin-top margin-bottom" [formGroup]="group">
-    <label class="radio-label-padding radio labelWeight"
-      >{{ field.label }}:
-    </label>
-    <br />
-    <mat-radio-group [formControlName]="field.name">
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let item of field.options"
-        [value]="item"
-        >{{ item.label }}</mat-radio-button
-      >
-    </mat-radio-group>
-  </div>
-  
+  <label class="radio-label-padding radio labelWeight"
+    >{{ field.label }}:
+  </label>
+  <br />
+  <mat-radio-group [formControlName]="field.name">
+    <mat-radio-button
+      class="radio-button"
+      *ngFor="let item of field.options"
+      [value]="item"
+      (change)="onOptionSelect($event)"
+    >
+      {{ item.label }}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
