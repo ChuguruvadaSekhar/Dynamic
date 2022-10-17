@@ -27,6 +27,7 @@
           "validations": [
             {
               "name": "required",
+              "required": true,
               "message": "Name is Required"
             }
           ]
@@ -41,13 +42,27 @@
           "label": "Bank Branch ID",
           "name": "bankBranchId",
           "type": "input",
-          "value": ""
+          "value": "",
+          "validations":[
+           {
+            "name": "required",
+            "required": true,
+            "message": "BankBranchId is required"
+           } 
+          ]
         },
         {
           "label": "Adminstrator's P.ID",
-          "name": "adminstrator'sP.ID",
+          "name": "adminstratorsPID",
           "type": "input",
-          "value": ""
+          "value": "",
+          "validations":[
+            {
+              "name": "required",
+              "required": true,
+              "message": "Adminstrator's P.Id is Required"
+            } 
+          ]
         },
         {
           "name": "howmanyBeneficiaryOwnersarethereinthecompany",
@@ -83,8 +98,12 @@
           "value": "",
           "validations": [
             {
-              "name": "firstName",
-              "message": "Lirst Name is required"
+              "name": "required",
+              "required": true,
+              "message": "First Name is required.",
+              "maxLength": 23,
+              "errormaxLength": "maxLength",
+              "maxLengtherror": "Maximum Length is 23"
             }
           ]
         },
@@ -95,8 +114,12 @@
           "value": "",
           "validations": [
             {
-              "name": "lastName",
-              "message": "Last Name is required"
+              "name": "required",
+              "required": true,
+              "message": "Last Name is required",
+              "maxLength": 23,
+              "errormaxLength": "maxLength",
+              "maxLengtherror":"Maximum Length is 23"
             }
           ]
         },
@@ -107,7 +130,8 @@
           "value": "",
           "validations": [
             {
-              "name": "ssn",
+              "name": "required",
+              "required": true,
               "message": "SSN is required"
             }
           ]
@@ -134,5 +158,6 @@
         }
       ]
     }
+
   ]
 }

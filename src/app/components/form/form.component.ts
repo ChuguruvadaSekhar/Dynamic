@@ -5,13 +5,21 @@ import {
   OnInit,
   SimpleChanges,
   ViewChild,
+  Input,
+  Output,
+  EventEmitter,
 } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { FieldConfig } from 'src/app/models/form-fields';
 import { ApiService } from '../../service/api-service.service';
 import { DynamicAccordionComponent } from '../cIndex';
 import { DynamicFormComponent } from '../cIndex';
-import { Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -28,6 +36,8 @@ export class FormComponent implements OnInit, OnChanges {
   configHeading: any;
   submitted = false;
   radioOption: any;
+  @Input() fields: FieldConfig[] | any;
+  @Output() submit: EventEmitter<any> = new EventEmitter<any>();
 
   clickEventSubscription!: Subscription;
   navigationFlag: boolean = true;
@@ -38,7 +48,7 @@ export class FormComponent implements OnInit, OnChanges {
 
   //Use @ViewChild decorator to inject a reference to dynamicform component.
 
-  @ViewChild(DynamicFormComponent) form: DynamicAccordionComponent | any;
+  @ViewChild(DynamicAccordionComponent) form: DynamicAccordionComponent | any;
 
   ngOnInit(): void {
     if (this.navigationFlag == true) {
@@ -71,24 +81,38 @@ export class FormComponent implements OnInit, OnChanges {
   }
 
   submitForm() {
+    // debugger
     this.submitted = true;
-
+    // this.form.submit();
     //stop here if form is invalid
 
+    console.log('form', this.userForm);
     if (this.userForm.invalid) {
-      return;
+      Object.values(this.userForm.controls).forEach((data: any) => {
+        //debugger
+        Object.values(data.controls).forEach((field: any) => {
+          Object.values(field.controls).forEach((fields: any) => {
+            console.log('fields', fields);
+            Object.keys(fields.controls).forEach((userFields: any) => {
+              const control: any = fields.get(userFields);
+              control.markAsTouched({ onlySelf: true });
+              console.log(userFields, control.value);
+            });
+          });
+        });
+      });
     }
-
-    // display form values on success
-    console.log(this.userForm.value);
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.configData.value, null, 4));
   }
 
-  onReset() {
-    // reset whole form back to intial state
+
+  onRest(){
+    //reset whole form back to intial state
     this.submitted = false;
     this.userForm.reset();
   }
+
+  
+
 
   radioOnChange(event: any) {
     this.radioOption = event.value || event;

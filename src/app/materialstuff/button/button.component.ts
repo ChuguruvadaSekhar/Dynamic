@@ -21,31 +21,7 @@ export class ButtonComponent implements OnInit {
     console.log(this.field);
   }
 
-  addBeneficiaryOwners(e: any) {
-    console.log(e);
-    const addBeneficiaryOwners = e.target.value || 0;
-    if (this.FieldInfo.length < addBeneficiaryOwners) {
-      for (let i = this.FieldInfo.length; i < addBeneficiaryOwners; i++) {
-        this.FieldInfo.push(
-          this.fb.group({
-            label: ['', Validators.required],
-            name: ['', Validators.required],
-          })
-        );
-        // this.FieldInfo.push(this.fb.array([]));
-        // e.forEach((field: any)=>{
-        //   if(field.name === field.name){
-        //     const control = this.fb.control(field)
-        //   }
-        // })
-      }
-    } else {
-      for (let i = this.FieldInfo.length; i >= addBeneficiaryOwners; i--) {
-        this.FieldInfo.removeAt(i);
-      }
-    }
-  }
-
+  
   callFunction(functionName: string) {
     if (functionName === 'addBeneficiaryOwners()') {
       this.outputEvent.emit({ addBeneficiaryOwners: true });

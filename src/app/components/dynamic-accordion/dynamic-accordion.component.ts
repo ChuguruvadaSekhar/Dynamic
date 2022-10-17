@@ -29,12 +29,12 @@ export class DynamicAccordionComponent implements OnInit, OnChanges {
   ObjectValues = Object.values;
   ObjectKeys = Object.keys;
 
-  @ViewChild(DynamicFormComponent) form: DynamicAccordionComponent | any;
+  @ViewChild(DynamicFormComponent) form: DynamicFormComponent | any;
 
   constructor() {}
 
   ngOnChanges(changes: any): void {
-    console.log(this.radioOption);
+    console.log("radioOption", this.radioOption);
     if (this.radioOption !== null && this.radioOption !== undefined) {
       if (this.radioOption.addBeneficiaryOwners === true) {
         this.fields.forEach((field: any) => {
@@ -88,6 +88,7 @@ export class DynamicAccordionComponent implements OnInit, OnChanges {
     return item.accordianLabel;
   }
 
+  
   getBusinessOwnerDetail() {
     return [
       {
@@ -97,8 +98,12 @@ export class DynamicAccordionComponent implements OnInit, OnChanges {
         value: '',
         validations: [
           {
-            name: 'firstName',
-            message: 'Lirst Name is required',
+            name: 'required',
+            required: true,
+            message: 'First Name is required',
+            maxLength: 23,
+            errormaxLength: "maxlength",
+            maxLengtherror: "Maximum Length is 23"
           },
         ],
       },
@@ -109,8 +114,12 @@ export class DynamicAccordionComponent implements OnInit, OnChanges {
         value: '',
         validations: [
           {
-            name: 'lastName',
+            name: "required",
+            required: true,
             message: 'Last Name is required',
+            maxLength: 23,
+            errormaxLength: "maxlength",
+            maxLengtherror: "Maximum Length is 23"
           },
         ],
       },
@@ -121,7 +130,8 @@ export class DynamicAccordionComponent implements OnInit, OnChanges {
         value: '',
         validations: [
           {
-            name: 'ssn',
+            name: 'required',
+            required: true,
             message: 'SSN is required',
           },
         ],

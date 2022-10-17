@@ -26,6 +26,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() radioOption: any;
   @Output() radioOnChange: EventEmitter<any> = new EventEmitter();
 
+
   panelOpenState = false;
   firstAccordian = false;
   keys: any;
@@ -37,6 +38,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.keys = Object.values(this.fields)[1];
+    console.log('hi', this.keys);
     //createControl Method inside the ngOnInit.
     //It creates the control dynamically and returns the FormGroup.
     this.form = this.createControl(this.keys);
@@ -59,14 +61,17 @@ export class DynamicFormComponent implements OnInit, OnChanges {
           this.bindValidations(field.validations || [])
         );
         group.addControl(field.name, control);
+        console.log('Helo', field.name);
       }
     });
     let groupName: any = Object.values(this.fields)[0];
+    console.log('groupName', groupName);
     this.addFormGroup(
       this.fb.group({
         [groupName]: group,
       })
     );
+    console.log('group', group);
     return group;
   }
 
@@ -75,7 +80,13 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     if (validations.length > 0) {
       const validList: any[] = [];
       validations.forEach((valid: any) => {
-        validList.push(valid.validator);
+        if(valid.required){
+          validList.push(Validators.required);
+        }
+        if(valid.maxLength){
+          validList.push(Validators.maxLength(valid.maxLength));
+        }
+        
       });
       return Validators.compose(validList);
     }
@@ -84,12 +95,12 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   // Validation Method
   //To validate all form fields we need to use the below function.
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((field) => {
-      const control: any = formGroup.get(field);
-      control.markAsTouched({ onlySelf: true });
-    });
-  }
+  // validateAllFormFields(formGroup: FormGroup) {
+  //   Object.keys(formGroup.controls).forEach((field) => {
+  //     const control: any = formGroup.get(field);
+  //     control.markAsTouched({ onlySelf: true });
+  //   });
+  // }
 
   //To fetch the FormArray from the form
   get FieldInfo() {
@@ -101,18 +112,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
     this.FieldInfo.push(group);
   }
 
-  // submit funtionality
-  //If the form is valid, the parent submit method is fired otherwise validation errors will be displayed
-  onSubmit(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-    if (this.form.valid) {
-      // this.submit.emit(this.form.value);
-      console.log(this.form.value);
-    } else {
-      this.validateAllFormFields(this.form);
-    }
-  }
+  
 
   //Needs to develope
 

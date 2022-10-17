@@ -7,7 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldConfig } from '../models/form-fields';
+import { FieldConfig, Validator } from '../models/form-fields';
 import {
   CheckboxComponent,
   InputComponent,
